@@ -60,13 +60,17 @@ for i in user_agents:
 
     # Get the first 10 lines of text.
     soup = BeautifulSoup(r.content, "html.parser")
-    body_content = soup.find('body').get_text(separator='\n')
-    lines = body_content.split('\n')
-    lines = [line for line in lines if line.strip()]
+    if soup:
+        body_content = soup.find('body').get_text(separator='\n')
+        lines = body_content.split('\n')
+        lines = [line for line in lines if line.strip()]
 
-    for line in lines[:10]:
-        print(line)
+        for line in lines[:10]:
+            print(line)
 
+
+    else:
+        print (r.content)
     print()
     # Wait 3 seconds between requests
     time.sleep(3)
