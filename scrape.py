@@ -34,9 +34,10 @@ user_agents = [
 ]
 
 # Try different urls to see how different websites behave.
-url = "https://www.reddit.com/r/bookshelf/"
+#url = "https://www.reddit.com/r/bookshelf/"
 #url = "https://www.quora.com/Why-do-websites-ask-us-to-fill-a-CAPTCHA"
-#url = "https://twitter.com/elonmusk"
+url = "https://twitter.com/elonmusk"
+
 
 
 # Make a call for each user agent
@@ -60,7 +61,7 @@ for i in user_agents:
 
     # Get the first 10 lines of text.
     soup = BeautifulSoup(r.content, "html.parser")
-    if soup:
+    if soup.find('body'):
         body_content = soup.find('body').get_text(separator='\n')
         lines = body_content.split('\n')
         lines = [line for line in lines if line.strip()]
